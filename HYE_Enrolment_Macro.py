@@ -78,6 +78,6 @@ while(1):
     
     
     #매크로 반복 속도
-    time.sleep(10)
+    time.sleep(5)
 
     
