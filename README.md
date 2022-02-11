@@ -4,9 +4,10 @@
 빈 자리가 났을 시 자동으로 수강신청하는 매크로입니다.
 
 **Requirement**
-
-- Python `https://www.python.org/downloads/` (저는 3.7.3 사용했는데 버전은 상관 없을 듯)
+ - Google Chrome (없으면 안됨)
+ - Python `https://www.python.org/downloads/` (저는 3.7.3 사용했는데 버전은 상관 없을 듯)
  - Selenium `pip install selenium`
+ - Web Driver Manager `pip install webdriver-manager`
  - Chrome Driver `https://sites.google.com/a/chromium.org/chromedriver/downloads`
 
 ## 보소
