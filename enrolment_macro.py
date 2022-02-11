@@ -76,6 +76,7 @@ while(1):
     time.sleep(2)
     driver.find_element_by_xpath('//*[@id="snb"]/ul/li[2]/a').click()
     
+    
     #매크로 반복 속도
     time.sleep(10)
 
