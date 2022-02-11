@@ -39,13 +39,15 @@ prev_nums = []
 
 #현재 희망인원과 이전 희망인원이 다를때 신청 버튼을 누르도록 함
 while(1):
-    time.sleep(3)
+    time.sleep(5)
     driver.find_element_by_xpath('//*[@id="snb"]/ul/li[5]/a').click()
     time.sleep(2)
 
     tbody = driver.find_element_by_xpath('//*[@id="gdMain"]/tbody')
+    time.sleep(2)
     rows = tbody.find_elements_by_tag_name('tr')
-
+    time.sleep(2)
+    
     for index, value in enumerate(rows):
         body=value.find_elements_by_tag_name("td")[1]
        
