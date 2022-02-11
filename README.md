@@ -17,6 +17,7 @@
  1. HYU_Enrolment_Macro 파일을  편집기로 열고 한양대학교 포탈 아이디 및 비밀번호 기입
 
 	> user_id = '여기에 아이디 기입'
+	
 	>user_pw = '여기에 비밀번호 기입'
 
 2. HYU_Enrolment_Macro 파일을 실행시키고 무한으로 즐기면 됨
