@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 import time
 
 #Chrome Driver 버전 업데이트
@@ -14,21 +15,21 @@ def set_chrome_driver():
     return driver
 
 url = 'https://portal.hanyang.ac.kr/sugang/sulg.do'
-user_id = ''
-user_pw = ''
+user_id = 'ghkdtpwls121'
+user_pw = 'p!1972006077'
 driver = set_chrome_driver()
 
 
 #로그인
 driver.get(url)
-driver.find_element_by_id('btn-user2').click()
+driver.find_element('id', 'btn-user2').click()
 time.sleep(3)
 driver.switch_to.window(driver.window_handles[-1])
 time.sleep(3)
-driver.find_element_by_name('userId').send_keys(user_id)
+driver.find_element('name', 'userId').send_keys(user_id)
 time.sleep(3)
-driver.find_element_by_name('password').send_keys(user_pw)
-driver.find_element_by_name('password').send_keys(Keys.RETURN)
+driver.find_element('name', 'password').send_keys(user_pw)
+driver.find_element('name', 'password').send_keys(Keys.RETURN)
 time.sleep(3)
 driver.switch_to.window(driver.window_handles[0])
 
@@ -40,20 +41,21 @@ prev_nums = []
 #현재 희망인원과 이전 희망인원이 다를때 신청 버튼을 누르도록 함
 while(1):
     time.sleep(5)
-    driver.find_element_by_xpath('//*[@id="snb"]/ul/li[5]/a').click()
+    driver.find_element('xpath', '//*[@id="snb"]/ul/li[6]').click()
     time.sleep(2)
 
-    tbody = driver.find_element_by_xpath('//*[@id="gdMain"]/tbody')
+    tbody = driver.find_element('xpath','//*[@id="gdMain"]/tbody')
     time.sleep(2)
-    rows = tbody.find_elements_by_tag_name('tr')
+  
+    rows = tbody.find_elements(By.TAG_NAME, 'tr')
     time.sleep(2)
     
     for index, value in enumerate(rows):
-        body=value.find_elements_by_tag_name("td")[1]
+        body=value.find_elements(By.TAG_NAME, "td")[1]
        
         #신청 아직 안된 강의만 cur_nums에 담는다
-        if body.find_element_by_id('btn_apply').get_attribute("value") == "신청":
-            cur_nums.append(value.find_element_by_id('sincheongInwon').text)
+        if body.find_element('id', 'btn_apply').get_attribute("value") == "신청":
+            cur_nums.append(value.find_element('id', 'sincheongInwon').text)
         else:
             break
         
@@ -68,15 +70,15 @@ while(1):
     else:
         for i in range(len(cur_nums)):
             if (int)(cur_nums[i]) != (int)(prev_nums[i]):
-                rows[i].find_element_by_id('btn_apply').click()
+                rows[i].find_element('id', 'btn_apply').click()
                 time.sleep(0.5)
-                driver.find_element_by_class_name('ui-button-text').click()
+                driver.find_element('class_name', 'ui-button-text').click()
                 time.sleep(0.5)
                 break
 
     cur_nums.clear()
     time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="snb"]/ul/li[2]/a').click()
+    driver.find_element('xpath', '//*[@id="snb"]/ul/li[2]/a').click()
     
     
     #매크로 반복 속도
